@@ -10,11 +10,11 @@
 		<relativePath/>
 	</parent>
 
-	<groupId>com.ecommerce</groupId>
-	<artifactId>sportscenter</artifactId>
+	<groupId>cz.ivosahlik</groupId>
+	<artifactId>ecommerce</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>sportscenter</name>
-	<description>Sports Center Website</description>
+	<name>ecommerce</name>
+	<description>Test ecommerce with spring boot 3.2, java 21 and react 18</description>
 
 	<properties>
 		<java.version>21</java.version>
