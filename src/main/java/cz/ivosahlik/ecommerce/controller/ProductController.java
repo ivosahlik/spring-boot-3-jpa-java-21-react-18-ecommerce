@@ -44,12 +44,15 @@ public class ProductController {
             @RequestParam(name = "typeId", required = false) Integer typeId,
             @RequestParam(name = "sort", defaultValue = "name") String sort,
             @RequestParam(name = "order", defaultValue = "asc") String order) {
-        Sort.Direction direction = order.equalsIgnoreCase("desc") ? Sort.Direction.DESC : Sort.Direction.ASC;
-        Sort sorting = Sort.by(direction, sort);
-        Pageable pageable = PageRequest.of(page, size, sorting);
-
+        Pageable pageable = getPageable(page, size, sort, order);
         Page<ProductResponse> productResponses = productService.getProducts(pageable, brandId, typeId, keyword);
         return new ResponseEntity<>(productResponses, HttpStatus.OK);
+    }
+
+    private Pageable getPageable(int page, int size, String sort, String order) {
+        Sort.Direction direction = order.equalsIgnoreCase("desc") ? Sort.Direction.DESC : Sort.Direction.ASC;
+        Sort sorting = Sort.by(direction, sort);
+        return PageRequest.of(page, size, sorting);
     }
 
     @GetMapping("/brands")
