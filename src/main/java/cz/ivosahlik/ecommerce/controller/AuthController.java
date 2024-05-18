@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static org.springframework.http.HttpStatus.*;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/auth")
@@ -35,18 +37,18 @@ public class AuthController {
                 .username(userDetails.getUsername())
                 .token(token)
                 .build();
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return new ResponseEntity<>(response, OK);
     }
 
     @GetMapping("/user")
     public ResponseEntity<UserDetails> getUserDetails(@RequestHeader("Authorization") String tokenHeader) {
         String token = extractTokenFromHeader(tokenHeader);
         if (token == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(BAD_REQUEST);
         }
         String username = jwtHelper.getUserNameFromToken(token);
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-        return new ResponseEntity<>(userDetails, HttpStatus.OK);
+        return new ResponseEntity<>(userDetails, OK);
     }
 
     private String extractTokenFromHeader(String tokenHeader) {

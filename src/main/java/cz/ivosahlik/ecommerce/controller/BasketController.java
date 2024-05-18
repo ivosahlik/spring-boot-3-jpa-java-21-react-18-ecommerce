@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import static org.springframework.http.HttpStatus.*;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/baskets")
@@ -41,7 +43,7 @@ public class BasketController {
     public ResponseEntity<BasketResponse> createBasket(@RequestBody BasketResponse basketResponse){
         Basket basket = convertToBasketEntity(basketResponse);
         BasketResponse createdBasket = basketService.createBasket(basket);
-        return new ResponseEntity<>(createdBasket, HttpStatus.CREATED);
+        return new ResponseEntity<>(createdBasket, CREATED);
     }
 
     private Basket convertToBasketEntity(BasketResponse basketResponse) {

@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import static org.springframework.http.HttpStatus.*;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/orders")
@@ -50,9 +52,9 @@ public class OrdersController {
     public ResponseEntity<Integer> createOrder(@Valid @RequestBody OrderDto orderDto) {
         Integer orderId = orderService.createOrder(orderDto);
         if (orderId == null) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            return ResponseEntity.status(INTERNAL_SERVER_ERROR).build();
         }
-        return ResponseEntity.status(HttpStatus.CREATED).body(orderId);
+        return ResponseEntity.status(CREATED).body(orderId);
     }
 
     @DeleteMapping("/{orderId}")

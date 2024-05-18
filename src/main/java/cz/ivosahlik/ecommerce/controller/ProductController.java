@@ -11,7 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.HttpStatus;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +20,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
+import static org.springframework.data.domain.Sort.Direction.ASC;
+import static org.springframework.data.domain.Sort.Direction.DESC;
+import static org.springframework.http.HttpStatus.OK;
 
 @RequiredArgsConstructor
 @RestController
@@ -32,7 +36,7 @@ public class ProductController {
     @GetMapping("/{id}")
     public ResponseEntity<ProductResponse> getProductById(@PathVariable("id") Integer productId) {
         ProductResponse productResponse = productService.getProductById(productId);
-        return new ResponseEntity<>(productResponse, HttpStatus.OK);
+        return new ResponseEntity<>(productResponse, OK);
     }
 
     @GetMapping()
@@ -46,11 +50,11 @@ public class ProductController {
             @RequestParam(name = "order", defaultValue = "asc") String order) {
         Pageable pageable = getPageable(page, size, sort, order);
         Page<ProductResponse> productResponses = productService.getProducts(pageable, brandId, typeId, keyword);
-        return new ResponseEntity<>(productResponses, HttpStatus.OK);
+        return new ResponseEntity<>(productResponses, OK);
     }
 
     private Pageable getPageable(int page, int size, String sort, String order) {
-        Sort.Direction direction = order.equalsIgnoreCase("desc") ? Sort.Direction.DESC : Sort.Direction.ASC;
+        Direction direction = order.equalsIgnoreCase("desc") ? DESC : ASC;
         Sort sorting = Sort.by(direction, sort);
         return PageRequest.of(page, size, sorting);
     }
@@ -58,12 +62,12 @@ public class ProductController {
     @GetMapping("/brands")
     public ResponseEntity<List<BrandResponse>> getBrands() {
         List<BrandResponse> brandResponses = brandService.getAllBrands();
-        return new ResponseEntity<>(brandResponses, HttpStatus.OK);
+        return new ResponseEntity<>(brandResponses, OK);
     }
 
     @GetMapping("/types")
     public ResponseEntity<List<TypeResponse>> getTypes() {
         List<TypeResponse> typeResponses = typeService.getAllTypes();
-        return new ResponseEntity<>(typeResponses, HttpStatus.OK);
+        return new ResponseEntity<>(typeResponses, OK);
     }
 }
