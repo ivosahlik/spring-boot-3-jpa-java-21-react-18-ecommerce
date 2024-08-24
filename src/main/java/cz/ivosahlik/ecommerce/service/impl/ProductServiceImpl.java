@@ -1,9 +1,10 @@
-package cz.ivosahlik.ecommerce.service;
+package cz.ivosahlik.ecommerce.service.impl;
 
 import cz.ivosahlik.ecommerce.entity.Product;
 import cz.ivosahlik.ecommerce.exceptions.ProductNotFoundException;
 import cz.ivosahlik.ecommerce.model.ProductResponse;
 import cz.ivosahlik.ecommerce.repository.ProductRepository;
+import cz.ivosahlik.ecommerce.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;

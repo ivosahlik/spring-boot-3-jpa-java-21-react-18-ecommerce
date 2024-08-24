@@ -1,10 +1,11 @@
-package cz.ivosahlik.ecommerce.service;
+package cz.ivosahlik.ecommerce.service.impl;
 
 import cz.ivosahlik.ecommerce.entity.Basket;
 import cz.ivosahlik.ecommerce.entity.BasketItem;
 import cz.ivosahlik.ecommerce.model.BasketItemResponse;
 import cz.ivosahlik.ecommerce.model.BasketResponse;
 import cz.ivosahlik.ecommerce.repository.BasketRepository;
+import cz.ivosahlik.ecommerce.service.BasketService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

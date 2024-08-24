@@ -1,8 +1,9 @@
-package cz.ivosahlik.ecommerce.service;
+package cz.ivosahlik.ecommerce.service.impl;
 
 import cz.ivosahlik.ecommerce.entity.Brand;
 import cz.ivosahlik.ecommerce.model.BrandResponse;
 import cz.ivosahlik.ecommerce.repository.BrandRepository;
+import cz.ivosahlik.ecommerce.service.BrandService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 

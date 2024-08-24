@@ -1,8 +1,9 @@
-package cz.ivosahlik.ecommerce.service;
+package cz.ivosahlik.ecommerce.service.impl;
 
 import cz.ivosahlik.ecommerce.entity.Type;
 import cz.ivosahlik.ecommerce.model.TypeResponse;
 import cz.ivosahlik.ecommerce.repository.TypeRepository;
+import cz.ivosahlik.ecommerce.service.TypeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
