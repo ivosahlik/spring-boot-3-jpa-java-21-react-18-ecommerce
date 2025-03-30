@@ -1,7 +1,7 @@
 package cz.ivosahlik.ecommerce.model;
 
-import cz.ivosahlik.ecommerce.entity.OrderAggregate.OrderStatus;
-import cz.ivosahlik.ecommerce.entity.OrderAggregate.ShippingAddress;
+import cz.ivosahlik.ecommerce.entity.order_aggregate.OrderStatus;
+import cz.ivosahlik.ecommerce.entity.order_aggregate.ShippingAddress;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

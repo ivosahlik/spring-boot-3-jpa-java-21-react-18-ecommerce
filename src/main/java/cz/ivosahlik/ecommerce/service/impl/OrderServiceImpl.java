@@ -1,8 +1,8 @@
 package cz.ivosahlik.ecommerce.service.impl;
 
-import cz.ivosahlik.ecommerce.entity.OrderAggregate.Order;
-import cz.ivosahlik.ecommerce.entity.OrderAggregate.OrderItem;
-import cz.ivosahlik.ecommerce.entity.OrderAggregate.ProductItemOrdered;
+import cz.ivosahlik.ecommerce.entity.order_aggregate.Order;
+import cz.ivosahlik.ecommerce.entity.order_aggregate.OrderItem;
+import cz.ivosahlik.ecommerce.entity.order_aggregate.ProductItemOrdered;
 import cz.ivosahlik.ecommerce.mapper.OrderMapper;
 import cz.ivosahlik.ecommerce.model.BasketItemResponse;
 import cz.ivosahlik.ecommerce.model.BasketResponse;

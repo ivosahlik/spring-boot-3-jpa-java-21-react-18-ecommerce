@@ -1,7 +1,7 @@
 package cz.ivosahlik.ecommerce.repository;
 
-import cz.ivosahlik.ecommerce.entity.OrderAggregate.Order;
-import cz.ivosahlik.ecommerce.entity.OrderAggregate.OrderStatus;
+import cz.ivosahlik.ecommerce.entity.order_aggregate.Order;
+import cz.ivosahlik.ecommerce.entity.order_aggregate.OrderStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,17 +13,20 @@ import java.util.List;
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Integer> {
     List<Order> findByBasketId(String basketId);
+
     List<Order> findByOrderStatus(OrderStatus orderStatus);
+
     List<Order> findByOrderDateBetween(LocalDateTime startdate, LocalDateTime endDate);
+
     @Query("""
             SELECT o FROM Order o JOIN o.orderItems oi
             WHERE oi.itemOrdered.name LIKE %:productName%
             """)
     List<Order> findByProductNameInOrderItems(@Param("productName") String productName);
-    @Query("""
-            SELECT o FROM Order o 
-            WHERE o.shippingAddress.city = :city
-        """)
 
+    @Query("""
+                SELECT o FROM Order o 
+                WHERE o.shippingAddress.city = :city
+            """)
     List<Order> findByShippingAddressCity(@Param("city") String city);
 }

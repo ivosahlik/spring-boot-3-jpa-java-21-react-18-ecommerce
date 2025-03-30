@@ -1,6 +1,6 @@
 package cz.ivosahlik.ecommerce.mapper;
 
-import cz.ivosahlik.ecommerce.entity.OrderAggregate.Order;
+import cz.ivosahlik.ecommerce.entity.order_aggregate.Order;
 import cz.ivosahlik.ecommerce.model.OrderDto;
 import cz.ivosahlik.ecommerce.model.OrderResponse;
 import org.mapstruct.Mapper;
@@ -11,6 +11,7 @@ import java.util.List;
 
 @Mapper
 public interface OrderMapper {
+
     @Mapping(source = "id", target = "id")
     @Mapping(source = "basketId", target = "basketId")
     @Mapping(source = "shippingAddress", target = "shippingAddress")
@@ -18,11 +19,11 @@ public interface OrderMapper {
     @Mapping(source = "deliveryFee", target = "deliveryFee")
     @Mapping(target = "total", expression = "java(order.getSubTotal() + order.getDeliveryFee())")
     @Mapping(target = "orderDate", expression = "java(java.time.LocalDateTime.now())")
-    @Mapping(target = "orderStatus", constant = "Pending")
+    @Mapping(target = "orderStatus", constant = "PENDING")
     OrderResponse OrderToOrderResponse(Order order);
 
     @Mapping(target = "orderDate", expression = "java(orderDto.getOrderDate())")
-    @Mapping(target = "orderStatus", constant = "Pending") // Reference enum constant directly
+    @Mapping(target = "orderStatus", constant = "PENDING")
     Order orderResponseToOrder(OrderDto orderDto);
 
     List<OrderDto> ordersToOrderResponses(List<Order> orders);

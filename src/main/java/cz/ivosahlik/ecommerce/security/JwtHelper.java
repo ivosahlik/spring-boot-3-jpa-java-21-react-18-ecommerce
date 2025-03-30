@@ -39,7 +39,6 @@ public class JwtHelper {
     }
 
     private String generateToken(Map<String, Object> claims, String subject) {
-        //Convert the secret string key into a Key object
         Key hmacKey = new SecretKeySpec(SECRET.getBytes(StandardCharsets.UTF_8), SignatureAlgorithm.HS512.getJcaName());
 
         return Jwts.builder()

@@ -1,4 +1,4 @@
-package cz.ivosahlik.ecommerce.entity.OrderAggregate;
+package cz.ivosahlik.ecommerce.entity.order_aggregate;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -34,7 +34,7 @@ public class Order {
     private Long deliveryFee;
     @Enumerated(EnumType.STRING)
     @Column(name="Order_Status")
-    private OrderStatus orderStatus = OrderStatus.Pending;
+    private OrderStatus orderStatus = OrderStatus.PENDING;
     public Double getTotal() {
         return getSubTotal()+getDeliveryFee();
     }

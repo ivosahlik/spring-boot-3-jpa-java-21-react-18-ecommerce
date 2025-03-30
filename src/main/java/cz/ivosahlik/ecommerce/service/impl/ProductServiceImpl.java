@@ -34,7 +34,7 @@ public class ProductServiceImpl implements ProductService {
                                              Integer typeId,
                                              String keyword) {
         Specification<Product> spec = getProductSpecification(brandId, typeId, keyword);
-        return productRepository.findAll(spec, pageable).map(this::convertToProductResponse);
+        return productRepository.findAll(spec, pageable).map(product -> convertToProductResponse(product));
     }
 
     private static Specification<Product> getProductSpecification(Integer brandId,

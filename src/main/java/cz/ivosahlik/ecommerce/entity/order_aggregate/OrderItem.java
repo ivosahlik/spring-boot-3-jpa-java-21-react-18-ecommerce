@@ -1,4 +1,4 @@
-package cz.ivosahlik.ecommerce.entity.OrderAggregate;
+package cz.ivosahlik.ecommerce.entity.order_aggregate;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
